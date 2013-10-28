@@ -1,0 +1,14 @@
+;; Object acs-etc/
+;; SEMANTICDB Tags save file
+(semanticdb-project-database-file "acs-etc/"
+  :tables (list 
+   (semanticdb-table ".emacs"
+    :major-mode 'emacs-lisp-mode
+    :tags 'nil
+    :file ".emacs"
+    )
+   )
+  :file "semantic.cache"
+  :semantic-tag-version "2.0pre4"
+  :semanticdb-version "2.0pre4"
+  )
