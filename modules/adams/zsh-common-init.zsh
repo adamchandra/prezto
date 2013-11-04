@@ -8,8 +8,8 @@ alias create-iso="mkisofs -J -r -v -V vol -o"
 alias burn-iso="cdrecord -v -eject speed=24 dev=0,0,0"
 alias mount-iso="mount -t iso9660 -o ro,loop=/dev/loop0"
 alias perl-install="perl -MCPAN -e shell"
-alias less='less -RSimw~ -x2 -#4'
-export PAGER='less -RSimw~ -x2 -#4'
+alias less='less -RSimw~ -x2 --shift=4'
+export PAGER='less -RSimw~ -x2 -shift=4'
 
 alias tree="tree -Ca -I 'target|.git|.hg|.svn'"
 
@@ -17,8 +17,7 @@ alias psme='ps fUsaunders'
 alias kmap="xmodmap ~/.xmodmap"
 alias kunmap="xmodmap ~/xmodmap-unswapped"
 alias difflr="diff -B --expand-tabs --side-by-side"
-
-alias difflr-changed="diff -B --suppress-common-lines --expand-tabs --side-by-side"
+alias difflrc="diff -B --suppress-common-lines --expand-tabs --side-by-side"
 
 # alias ssh="export DISPLAY=`uname -n`:0.0; ssh"
 # alias ssh="export DISPLAY=`uname -n`:0.0; ssh -Y"
@@ -33,6 +32,9 @@ alias du='du -hs'
 alias ack=~/bin/ack
 alias ack-scala='~/bin/ack --type=scala'
 
+alias mv='nocorrect mv'
+alias mysql='nocorrect mysql'
+alias rm='nocorrect rm'
 
 alias gittree='git log --graph --full-history --color --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20 %s %cr"'
 alias gittree-who='git log --graph --full-history --color --pretty=format:"%x1b[31m%h%x09%x1b[32m%d%x1b[0m%x20 %cn %s %cr"'
