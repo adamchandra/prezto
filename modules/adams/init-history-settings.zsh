@@ -1,0 +1,28 @@
+#!/bin/zsh
+
+# setopt appendhistory autocd extendedglob nomatch
+unsetopt correctall
+
+# Reference:  http://zsh.sourceforge.net/Guide/zshguide02.html#l16
+HISTSIZE=100000
+SAVEHIST=100000
+HISTFILE=~/.zsh-history
+
+APPEND_HISTORY="true"
+# INC_APPEND_HISTORY=0
+# SHARE_HISTORY=0
+EXTENDED_HISTORY=1
+HIST_IGNORE_DUPS=1 
+HIST_IGNORE_ALL_DUPS=1 
+# HIST_EXPIRE_DUPS_FIRST=0
+# HIST_SAVE_NO_DUPS=1 
+# HIST_FIND_NO_DUPS=1
+# HIST_ALLOW_CLOBBER=1 
+HIST_REDUCE_BLANKS=1
+HIST_IGNORE_SPACE=1 
+HIST_NO_STORE=1
+HIST_NO_FUNCTIONS=1
+NO_HIST_BEEP=1
+
+export EDITOR='emacsclient-24.2 -n'
+export ALTERNATE_EDITOR=""
