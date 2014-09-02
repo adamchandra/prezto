@@ -29,6 +29,7 @@ zstyle ':prezto:load' pmodule \
   'terminal' \
   'editor' \
   'history' \
+  'history-substring-search' \
   'directory' \
   'spectrum' \
   'utility' \
@@ -71,14 +72,20 @@ zstyle ':prezto:module:editor' key-bindings 'emacs'
 # History Substring Search
 #
 
-# Set the query found color.
-# zstyle ':prezto:module:history-substring-search:color' found ''
+zstyle ':prezto:module:history-substring-search' case-sensitive 'yes'
 
-# Set the query not found color.
-# zstyle ':prezto:module:history-substring-search:color' not-found ''
+# If colors are enabled, *history-substring-search* will automatically highlight positive results.
+zstyle ':prezto:module:history-substring-search' color 'yes'
 
-# Set the search globbing flags.
-# zstyle ':prezto:module:history-substring-search' globbing-flags ''
+# To set the query found color, add the following line to *zpreztorc*:
+zstyle ':prezto:module:history-substring-search:color' found 'blue'
+
+# To set the query not found color, add the following line to *zpreztorc*:
+zstyle ':prezto:module:history-substring-search:color' not-found 'red'
+
+# To set the search globbing flags, add the following line to *zpreztorc*:
+zstyle ':prezto:module:history-substring-search' globbing-flags ''
+
 
 #
 # Pacman
@@ -126,12 +133,43 @@ zstyle ':prezto:module:syntax-highlighting' highlighters \
   'cursor' \
   'root'
 
+# Set syntax pattern styles
+# zstyle ':prezto:module:syntax-highlighting:highlighters:pattern'  'rm *' 'fg=white,bold,bg=red'
+  
 # Set syntax highlighting styles.
-# zstyle ':prezto:module:syntax-highlighting' styles \
-#   'builtin' 'bg=blue' \
-#   'command' 'bg=blue' \
-#   'function' 'bg=blue'
-#
+zstyle ':prezto:module:syntax-highlighting' styles \
+  'builtin' 'bg=blue' \
+  'alias' '' \
+  'command' 'bg=blue' \
+  'function' 'bg=blue' \
+  'globbing' 'fg=green' \
+  'history-expansion' 'bg=blue' \
+  'single-hyphen-option' 'bg=blue' \
+  'cursor' 'bg=blue,fg=green'
+
+  #'unknown-token` - unknown tokens / errors
+  #'reserved-word` - shell reserved words
+  #'alias` - aliases
+  #'builtin` - shell builtin commands
+  #'function` - functions
+  #'command` - commands
+  #'precommand` - precommands (i.e. exec, builtin, ...)
+  #'commandseparator` - command separation tokens
+  #'hashed-command` - hashed commands
+  #'path` - paths
+  #'path_prefix` - path prefixes
+  #'path_approx` - approximated paths
+  #'globbing` - globbing expressions
+  #'history-expansion` - history expansion expressions
+  #'single-hyphen-option` - single hyphen options
+  #'double-hyphen-option` - double hyphen options
+  #'back-quoted-argument` - backquoted expressions
+  #'single-quoted-argument` - single quoted arguments
+  #'double-quoted-argument` - double quoted arguments
+  #'dollar-double-quoted-argument` -  dollar double quoted arguments
+  #'back-double-quoted-argument` -  back double quoted arguments
+  #'assign` - variable assignments
+  #'default` - parts of the buffer that do not match anything
 
 #
 # Terminal

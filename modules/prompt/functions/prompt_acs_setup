@@ -11,23 +11,23 @@
 # Load dependencies.
 pmodload 'helper'
 
-function prompt_sorin_pwd {
+function prompt_acs_pwd {
   local pwd="${PWD/#$HOME/~}"
 
   if [[ "$pwd" == (#m)[/~] ]]; then
-    _prompt_sorin_pwd="$MATCH"
+    _prompt_acs_pwd="$MATCH"
     unset MATCH
   else
-    _prompt_sorin_pwd="${${${(@j:/:M)${(@s:/:)pwd}##.#?}:h}%/}/${pwd:t}"
+    _prompt_acs_pwd="${${${(@j:/:M)${(@s:/:)pwd}##.#?}:h}%/}/${pwd:t}"
   fi
 }
 
-function prompt_sorin_precmd {
+function prompt_acs_precmd {
   setopt LOCAL_OPTIONS
   unsetopt XTRACE KSH_ARRAYS
 
   # Format PWD.
-  prompt_sorin_pwd
+  prompt_acs_pwd
 
   # Get Git repository information.
   if (( $+functions[git-info] )); then
@@ -35,7 +35,7 @@ function prompt_sorin_precmd {
   fi
 }
 
-function prompt_sorin_setup {
+function prompt_acs_setup {
   setopt LOCAL_OPTIONS
   unsetopt XTRACE KSH_ARRAYS
   prompt_opts=(cr percent subst)
@@ -44,7 +44,7 @@ function prompt_sorin_setup {
   autoload -Uz add-zsh-hook
 
   # Add hook for calling git-info before each command.
-  add-zsh-hook precmd prompt_sorin_precmd
+  add-zsh-hook precmd prompt_acs_precmd
 
   # Set editor-info parameters.
   zstyle ':prezto:module:editor:info:completing' format '%B%F{red}...%f%b'
@@ -72,14 +72,14 @@ function prompt_sorin_setup {
     'rprompt' '%A%B|%S%a%d%m%r%U%u'
 
   # Define prompts.
-  PROMPT='%B[%b%F{cyan}%M:${_prompt_sorin_pwd}%f${git_info:+${(e)git_info[prompt]}}${git_info[rprompt]}%B]%b
+  PROMPT='%B[%b%F{cyan}%M:${_prompt_acs_pwd}%f${git_info:+${(e)git_info[prompt]}}${git_info[rprompt]}%B]%b
 %*${editor_info[keymap]} '
 
   SPROMPT='zsh: correct %F{red}%R%f to %F{green}%r%f [nyae]? '
 
-  # PROMPT='%F{cyan}${_prompt_sorin_pwd}%f${git_info:+${(e)git_info[prompt]}}%(!. %B%F{red}#%f%b.)${editor_info[keymap]} '
+  # PROMPT='%F{cyan}${_prompt_acs_pwd}%f${git_info:+${(e)git_info[prompt]}}%(!. %B%F{red}#%f%b.)${editor_info[keymap]} '
   # RPROMPT='${editor_info[overwrite]}%(?:: %F{red}⏎%f)${VIM:+" %B%F{green}V%f%b"}${git_info[rprompt]}'
 }
 
-prompt_sorin_setup "$@"
+prompt_acs_setup "$@"
 

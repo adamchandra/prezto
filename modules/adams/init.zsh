@@ -6,14 +6,17 @@
 #   Adam Saunders
 #
 
-source "${0:h}/zsh-common-init.zsh" || return 1
+setxkbmap -option ctrl:swapcaps
+xinput set-prop 10 "Device Enabled" 0
 
 MACHINE_NAME=`uname -n`
 
-LOCAL_ZSHRC=${0:h}/zshrc-$MACHINE_NAME
+LOCAL_ZSHRC=${0:h}/init-$MACHINE_NAME
+
 # load machine-specific settings
 [[ -f "$LOCAL_ZSHRC" ]] && source "$LOCAL_ZSHRC"
 
-MISC_FUNCTIONS=${0:h}/misc-functions
-[[ -f "$MISC_FUNCTIONS" ]] && source "$MISC_FUNCTIONS"
+source ${0:h}/init-history-settings.zsh
+source ${0:h}/init-misc-functions.zsh
+source ${0:h}/init-aliases.zsh
 
